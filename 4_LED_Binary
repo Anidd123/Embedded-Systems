@@ -1,0 +1,24 @@
+// Code for 4 LEDs showing binary sequence
+
+int rem_1, rem_2, rem_3, rem_4, num, i, ledArray[4] = {14,13,12,11};
+int binArray[15] = {};
+
+
+void setup() {
+  // put your setup code here, to run once:
+  for (i=0; i<=3; i++){
+    pinMode(ledArray[i], OUTPUT);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  for (i=1; i<16; i++){
+    digitalWrite(ledArray[0], (i%2));
+    digitalWrite(ledArray[1], (i/2) % 2);
+    digitalWrite(ledArray[2], (i/4) % 2);
+    digitalWrite(ledArray[3], (i/8) % 2);
+    delay(1000);
+    printf("%d \n", i);
+  }
+}
