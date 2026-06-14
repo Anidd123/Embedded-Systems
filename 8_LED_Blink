@@ -1,0 +1,30 @@
+// Code for 8 LEDs blinking from left to right and reverse in sequence
+
+int i, ledArray[8] = {14,13,12,11,10,9,8,7};
+
+void setup() {
+  // put your setup code here, to run once:
+  for (i=0; i <= 8; i++){
+    pinMode(ledArray[i], OUTPUT);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  digitalWrite(ledArray[1], 0);
+  digitalWrite(ledArray[0], 1);
+  delay(500);
+
+  for (i=1; i <= 7; i++){
+    digitalWrite(ledArray[i-1], 0);
+    digitalWrite(ledArray[i], 1);
+    delay(500);
+  }
+
+  for (i=6; i > 0; i--){
+    digitalWrite(ledArray[i+1], 0);
+    digitalWrite(ledArray[i], 1);
+    delay(500);
+  }
+}
