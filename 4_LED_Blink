@@ -1,30 +1,21 @@
-// Code for 4 LEDs blinking one after the other in sequence
+// Code for 4 LEDs blinking from left to right
 
-#define led1 13
-#define led2 14
-#define led3 19
-#define led4 20
+int i, ledArray[4] = {14,13,12,11};
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
-  pinMode(led3, OUTPUT);
-  pinMode(led4, OUTPUT);
+  for (i=0; i <= 3; i++){
+    pinMode(ledArray[i], OUTPUT);
+  }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(led4, 0);
-  digitalWrite(led1, 1);
-  delay(1000);
-  digitalWrite(led1, 0);
-  digitalWrite(led2, 1);
-  delay(1000);
-  digitalWrite(led2, 0);
-  digitalWrite(led3, 1);
-  delay(1000);
-  digitalWrite(led3, 0);
-  digitalWrite(led4, 1);
-  delay(1000);
+  for (i=0; i <= 4; i++){
+    digitalWrite(ledArray[i-1], 0);
+    digitalWrite(ledArray[i], 1);
+    delay(500);
+  }
 }
+
+// Link for wokwi simulator: https://wokwi.com/projects/466810168214697985
