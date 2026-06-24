@@ -1,0 +1,30 @@
+#define pot 19
+#define led 14
+#define buzzer 13
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(pot, INPUT);
+  pinMode(led, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int level = analogRead(pot);
+  level = map(level, 0, 4095, 0, 100);
+  if (level < 30){
+    Serial.printf("Current ambient light intensity = %d \n", level);
+    Serial.printf("LIGHT ON \n");
+    digitalWrite(led, HIGH);
+    digitalWrite(buzzer, HIGH);
+  }
+
+  else{
+    Serial.printf("Current ambient light intensity = %d \n", level);
+    Serial.printf("LIGHT OFF \n");
+    digitalWrite(led, LOW);
+    digitalWrite(buzzer, LOW);
+  }
+}
