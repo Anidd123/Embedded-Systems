@@ -1,0 +1,22 @@
+#define led 14
+#define button 19
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(led, OUTPUT);
+  pinMode(button, INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int status = digitalRead(button);
+  if (status == 0){
+    Serial.println("AVAILABLE");
+    digitalWrite(led, LOW);
+  }
+  else{
+    Serial.println("OCCUPIED");
+    digitalWrite(led, HIGH);
+  }
+}
